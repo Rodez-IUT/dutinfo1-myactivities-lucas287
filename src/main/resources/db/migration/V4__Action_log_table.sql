@@ -9,6 +9,3 @@ create table action_log
 	entity_id bigint not null
 );
 
-create TRIGGER modif_table
-    AFTER DELETE ON activity
-    FOR EACH ROW EXECUTE PROCEDURE audit_modif_tables();
