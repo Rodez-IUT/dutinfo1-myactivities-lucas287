@@ -1,14 +1,16 @@
-create or replace function register_user_on_activity(id_user bigint, id_activity bigint) returns setof registration as $$
+create or replace function register_user_on_activity(id_user bigint, id_activity bigint) returns registration as $$
 declare
 newId bigint;
+res_registration registration%rowtype;
 begin
 newId = nextval('id_generator');
 if not exists (select * from registration where user_id = id_user and activity_id = id_activity) then
 	insert into registration (id, user_id, activity_id)
 	values (newId, id_user, id_activity);
 
-	return query select * from registration
+	select * into res_registration from registration
 	where registration.id = newId;
+	return res_registration;
 else
 	raise exception 'registration_already_exists';
 end if;
