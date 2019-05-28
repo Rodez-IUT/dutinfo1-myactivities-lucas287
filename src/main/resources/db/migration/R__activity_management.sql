@@ -27,7 +27,7 @@ $$ language plpgsql;
 CREATE OR REPLACE FUNCTION find_all_activities(OUT activities_curs refcursor) AS $$
     begin
      open activities_curs FOR
-            select act.id as id, title, description, creation_date, modification_date, owner_id, username
+            select act.id, username as id, title, description, creation_date, modification_date, owner_id, username
                 from activity act left join "user" owner
                 on act.owner_id = owner.id
                 order by title, username;

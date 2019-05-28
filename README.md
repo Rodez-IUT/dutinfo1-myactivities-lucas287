@@ -7,5 +7,3 @@ Une fois le wiki lancé, rendez-vous à l'adresse suivante pour obtenir toutes l
 http://localhost:8085/ProgrammationBD
 
 # TODO permettre à l'utilisateur connecté de fixer les activités sans propriétaire
-
-- Blyat
